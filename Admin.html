@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة القيادة | سيرفر العاصمة (آمن)</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/dVQc70hW/889cfe49-537a-4341-8864-45211c47d0a9.png">
     <style>
         :root { --bg-dark: #050505; --panel-bg: #121216; --border-color: #22222a; --accent-glow: #00e5ff; --text-main: #ffffff; --text-muted: #8892b0; --success: #10b981; --warning: #f59e0b; --danger: #ef4444; }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; display: flex; height: 100vh; overflow: hidden; }
         #authScreen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); display: flex; justify-content: center; align-items: center; z-index: 9999; }
         .auth-box { background: var(--panel-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--border-color); text-align: center; width: 90%; max-width: 350px; }
+        .auth-box img { width: 100px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.3)); }
         .auth-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; box-sizing: border-box; }
         .btn-auth { background: linear-gradient(90deg, #00b6cc, var(--accent-glow)); color: #000; border: none; padding: 12px; width: 100%; font-size: 1.1rem; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .toggle-link { color: var(--accent-glow); cursor: pointer; font-size: 0.9rem; margin-top: 15px; display: block; text-decoration: underline; }
@@ -42,7 +44,7 @@
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 20px; box-sizing: border-box;}
         .modal-content { background: var(--panel-bg); padding: 25px; border-radius: 12px; width: 100%; max-width: 650px; border: 1px solid var(--border-color); max-height: 90vh; overflow-y: auto;}
         .form-row { margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
-        .form-row span { color: var(--text-muted); font-size: 0.95rem; display: block; margin-bottom: 5px; font-weight: bold;}
+        .form-row span { color: var(--text-muted); font-size: 0.9rem; display: block; margin-bottom: 5px; font-weight: bold;}
         .form-row div { color: #fff; font-size: 1.05rem; line-height: 1.6; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px; border: 1px solid #222;}
         .reject-box { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); padding: 15px; border-radius: 8px; margin-bottom: 15px; display: none; }
         .reject-box select, .reject-box input { width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--danger); border-radius: 5px; box-sizing: border-box;}
@@ -53,7 +55,8 @@
 
     <div id="authScreen">
         <div class="auth-box" id="loginForm">
-            <h2 style="color: var(--accent-glow);">تسجيل الدخول</h2>
+            <img src="https://i.postimg.cc/dVQc70hW/889cfe49-537a-4341-8864-45211c47d0a9.png" alt="Logo">
+            <h2 style="color: var(--accent-glow); margin-top:0;">تسجيل الدخول</h2>
             <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" required>
             <input type="password" id="loginPassword" placeholder="كلمة المرور" required>
             <button class="btn-auth" onclick="window.handleLogin()" id="btnLogin">دخول للنظام</button>
@@ -62,7 +65,8 @@
         </div>
         
         <div class="auth-box" id="registerForm" style="display: none;">
-            <h2 style="color: var(--warning);">طلب انضمام للإدارة</h2>
+            <img src="https://i.postimg.cc/dVQc70hW/889cfe49-537a-4341-8864-45211c47d0a9.png" alt="Logo">
+            <h2 style="color: var(--warning); margin-top:0;">طلب انضمام للإدارة</h2>
             <input type="text" id="regName" placeholder="الاسم الشخصي" required>
             <input type="email" id="regEmail" placeholder="البريد الإلكتروني" required>
             <input type="password" id="regPassword" placeholder="أنشئ كلمة مرور لك" required>
@@ -188,13 +192,12 @@
         </div>
     </div>
 
-    <!-- سكريبت لوحة التحكم مشفر ومحمي بالكامل بأسلوب احترافي -->
     <script type="module">
 const _0x3e1d = ["AIzaSyB9TBHZn3qzhb2eKH9rCTF4rspdLUvRftM","al3asma.firebaseapp.com","al3asma","al3asma.firebasestorage.app","108484620974","1:108484620974:web:04e448d20529c14e89733f","G-W4G5YQ5HFE","https://discord.com/api/webhooks/1519389569697714327/NE4luQidB1i6yo2prHS0VaGCMR06Btosbi4GI49TSHt8AUeBl-Aw_Di0kvJx9u6iwfgv","POST","Content-Type","application/json","Error Webhook:","","loginForm","registerForm","none","block","regEmail","regName","regPassword","btnRegister","أكمل البيانات!","جاري الإنشاء...","admins","pending","تم إنشاء حسابك الآمن. يرجى انتظار تفعيل رئيس مجلس الإدارة.","error: ","إرسال الطلب","loginEmail","loginPassword","btnLogin","أدخل البريد وكلمة المرور.","جاري التحقق...","حسابك قيد المراجعة من رئيس مجلس الإدارة ولم يتم تفعيله بعد.","دخول للنظام","لا توجد بيانات صلاحيات لهذا الحساب.","loginError","authScreen","mainWrapper","flex","myEmailDisplay","الحساب: ","myRoleDisplay","رتبة: ","chairman","nav-city","nav-mgmt","nav-health","nav-interior","nav-roles","hr","management","health_affairs","interior_affairs","applications","admin-users-body","role_","تم تحديث الرتبة بنجاح!",".nav-item","active",".content-section","active-section","sidebar","active-mobile","city","mgmt","health","interior","accepted","rejected","-pending","<tr><td colspan='6'>لا يوجد</td></tr>","-accepted","<tr><td colspan='5'>لا يوجد</td></tr>","-rejected","stat-total","stat-pending","stat-accepted","stat-rejected","search-","Tab",".search-row","المدينة","الإدارة","وزارة الصحة","وزارة الداخلية","modalDeptName","modalContentData","primaryActions","acceptSection","rejectSection","rejectReasonText","reviewModal","rejectType","اكتب السبب!","الطلب غير موجود!","ar-EG","قبل (",")","رفض (",") بسبب: ","logs-body","afterbegin","✅ وايت ليست (قبول نهائي)","❌ رفض الطلب","👤 اسم مقدم الطلب","غير معروف","🆔 آيدي اللاعب (ID)","🎮 حساب الديسكورد","لا يوجد","📈 الحالة الجديدة","👮 الأدمن المسؤول","⚠️ نوع الرفض","📝 السبب بالتفصيل","خطأ في تحديث البيانات","هل أنت متأكد من حذف هذا الطلب نهائياً من قاعدة البيانات؟ لا يمكن التراجع عن هذا الإجراء.","تم حذف الطلب نهائياً.","👤 الاسم","🏢 القسم","خطأ في حذف الطلب."];
 function _0x2b8c(idx) { return _0x3e1d[idx]; }
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-//__IMPORT_3__
 
 const firebaseConfig = {
     apiKey: _0x2b8c(0),
@@ -576,7 +579,11 @@ window.deleteApplication = async function() {
         }
     }
 };
+    </script>
 
+    <!-- سكريبت حماية النظام ومكافحة التفتيش (Ctrl+Shift+I / F12 / Key traps) -->
+    <script>
+        function _0x563b(_0x162ae4,_0x1d48e7){_0x162ae4=_0x162ae4-0x18a;var _0x550831=_0x5508();var _0x563b47=_0x550831[_0x162ae4];return _0x563b47;}var _0x29cac6=_0x563b;(function(_0x4acd4d,_0x49455d){var _0x1788d5=_0x563b,_0x6228d4=_0x4acd4d();while(!![]){try{var _0x2d0c45=-parseInt(_0x1788d5(0x192))/0x1*(-parseInt(_0x1788d5(0x19e))/0x2)+parseInt(_0x1788d5(0x194))/0x3+parseInt(_0x1788d5(0x197))/0x4*(parseInt(_0x1788d5(0x195))/0x5)+-parseInt(_0x1788d5(0x19f))/0x6+parseInt(_0x1788d5(0x18d))/0x7*(-parseInt(_0x1788d5(0x198))/0x8)+parseInt(_0x1788d5(0x199))/0x9*(parseInt(_0x1788d5(0x191))/0xa)+-parseInt(_0x1788d5(0x18b))/0xb*(parseInt(_0x1788d5(0x19a))/0xc);if(_0x2d0c45===_0x49455d)break;else _0x6228d4['push'](_0x6228d4['shift']());}catch(_0x3301ab){_0x6228d4['push'](_0x6228d4['shift']());}}}(_0x5508,0xc3529),document['addEventListener'](_0x29cac6(0x190),function(_0x3eaae4){_0x3eaae4['preventDefault']();}),document[_0x29cac6(0x19d)]('keydown',function(_0x50fc3d){var _0x94c8d=_0x29cac6;if(_0x50fc3d['key']===_0x94c8d(0x18a)||_0x50fc3d['keyCode']===0x7b)return _0x50fc3d[_0x94c8d(0x19b)](),![];if(_0x50fc3d[_0x94c8d(0x18f)]==='F8'||_0x50fc3d[_0x94c8d(0x193)]===0x77)return _0x50fc3d[_0x94c8d(0x19b)](),![];if(_0x50fc3d['ctrlKey']&&(_0x50fc3d[_0x94c8d(0x18f)]==='u'||_0x50fc3d[_0x94c8d(0x18f)]==='U'||_0x50fc3d[_0x94c8d(0x193)]===0x55))return _0x50fc3d[_0x94c8d(0x19b)](),![];if(_0x50fc3d[_0x94c8d(0x18e)]&&_0x50fc3d['shiftKey']&&(_0x50fc3d['key']==='I'||_0x50fc3d['key']==='i'||_0x50fc3d[_0x94c8d(0x18f)]==='J'||_0x50fc3d[_0x94c8d(0x18f)]==='j'||_0x50fc3d['key']==='C'||_0x50fc3d['key']==='c'))return _0x50fc3d[_0x94c8d(0x19b)](),![];}),setInterval(function(){var _0x339bf3=_0x29cac6,_0x306b7c=new Date()[_0x339bf3(0x19c)]();debugger;var _0x288ed5=new Date()['getTime']();_0x288ed5-_0x306b7c>0x64&&(document['body'][_0x339bf3(0x196)]=_0x339bf3(0x18c));},0x64));function _0x5508(){var _0x1adeda=['getTime','addEventListener','1476242KukBst','712830SfMhkW','F12','11BklttQ',"<h1 style='color:#00e5ff; text-align:center; margin-top:20%; font-family:sans-serif;'>سيرفر العاصمة - حماية النظام نشطة!</h1>",'7KCXwmn','ctrlKey','key','contextmenu','15716310QuYvZf','1uSPHTa','keyCode','1021305bkOENG','5dPPBbl','innerHTML','4450876nRcBmw','2059592lNunvx','9nTEsCn','31039332aeQmlW','preventDefault'];return _0x1adeda;}
     </script>
 </body>
 </html>
